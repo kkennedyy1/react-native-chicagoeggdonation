@@ -1,26 +1,14 @@
-import React from 'react';
-import { Flatlist } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import React, {Component} from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+// import { ListItem } from 'react-native-elements';
 
-function Directory(props) {
+class Directory extends Component {
 
-    const renderDirectoryItem = ({item}) => {
+    render() {
         return (
-            <ListItem 
-                title={item.name}
-                subtitle={item.description}
-                leftAvatar={{ source: require('./images/image1.jpg')}}
-            />
-        )
-    };
-
-    return (
-        <Flatlist
-            data={props.donors}
-            renderItem={renderDirectoryItem}
-            keyExtractor={item => item.id.toString()}
-        />
-    );
+            null
+        );
+    } 
 }
 
 export default Directory;
