@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
 import { DONORS } from '../shared/Donors.js';
 
@@ -10,10 +10,12 @@ function RenderDonor({donor}) {
             <Card
                 featuredTitle={donor.name}
                 image={require('./images/image1.jpg')}
+                containerStyle={{margin: 0}}
             >
-                <Text style={{margin: 10}}>
-                    {donor.description}
-                </Text>
+                <Text style={{marginTop: 20, textAlign: 'center'}}> Age: {donor.age}</Text>
+                <Text style={{textAlign: 'center'}}> Hair: {donor.hairColor}</Text>
+                <Text style={{marginBottom: 20, textAlign: 'center'}}> Height: {donor.height}</Text>
+                <Text style={{marginLeft: 30, fontSize: 24}}>{donor.description}</Text>
             </Card>
         );
     }
