@@ -24,7 +24,7 @@ class Directory extends Component {
                     title={item.name}
                     subtitle={item.description}
                     onPress={() => navigate('DonorInfo', { donorId: item.id })}
-                    leftAvatar={{ source: require('./images/image2.jpg')}}
+                    leftAvatar={{ source: require('./images/image7.jpg')}}
                 />
             );
         };

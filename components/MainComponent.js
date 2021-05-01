@@ -5,11 +5,12 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import DonorInfo from './DonorInfoComponent';
 import { DONORS } from '../shared/Donors';
-import { ScrollView, Platform, View, StyleSheet } from 'react-native';
+import { ScrollView, Platform, View, StyleSheet, Text, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
+import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
     {
@@ -109,6 +110,25 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
+const CustomDrawerContentComponent = props => (
+    <ScrollView>
+        <SafeAreaView
+            style={styles.container}
+            forceInset={{top: 'always', horizontal: 'never'}}
+        >
+            <View style={styles.drawerHeader}>
+                <View>
+                    <Image 
+                        source={require('./images/logo2.png')}
+                        style={styles.drawerImage}
+                    />
+                </View>
+            </View>
+            <DrawerItems {...props} />
+        </SafeAreaView>
+    </ScrollView>
+);
+
 const MainNavigator = createDrawerNavigator(
     {
         Home: { 
@@ -163,11 +183,12 @@ const MainNavigator = createDrawerNavigator(
                         color={tintColor}
                     />
                 )
-            }
+            },
         }
     },
     {
         drawerBackgroundColor:'#FBCBC9',
+        contentComponent: CustomDrawerContentComponent
     }
 );
 
@@ -188,6 +209,33 @@ class Main extends Component {
 }
 
 const styles = StyleSheet.create({
+    stackIcon: {
+        marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    },
+    container: {
+        flex: 1
+    },
+    drawerHeader: {
+        backgroundColor: '#fff',
+        height: 140,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        flexDirection: 'row'
+    },
+    drawerHeaderText: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold',
+        alignContent: 'center'
+    },
+    drawerImage: {
+        margin: 10,
+        height: 60,
+        width: 175
+    },
     stackIcon: {
         marginLeft: 10,
         color: '#fff',

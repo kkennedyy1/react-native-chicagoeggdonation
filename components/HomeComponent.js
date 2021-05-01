@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Button, Image } from 'react-native';
 import { Card, CardHeader } from 'react-native-elements';
 import { DONORS } from '../shared/Donors.js';
 
@@ -19,7 +19,10 @@ class Home extends Component {
     render() {
         return (
             <ScrollView style={styles.container}>
-                <Text style={styles.text}>Chicago Egg Donation</Text>
+                 <Image 
+                        source={require('./images/logo2.png')}
+                        style={styles.logoImage}
+                />
                 <Card
                     featuredTitle='About Us'
                     image={require('./images/aboutus.jpg')}
@@ -53,6 +56,9 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontStyle: 'italic',
         color: '#383838'
+    },
+    logoImage: {
+        width: '100%'
     }
 });
 
